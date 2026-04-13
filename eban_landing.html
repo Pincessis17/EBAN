@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eban — Join the Waitlist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:#F7F5F0;color:#1A1A18;min-height:100vh;}
+
+/* ── HERO ── */
+.hero{background:#0F6E56;padding:56px 24px 64px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.logo{font-family:'Playfair Display',serif;font-size:26px;color:#fff;letter-spacing:-.5px;margin-bottom:32px;position:relative;}
+.logo span{color:#C9A84C;}
+.hero-tag{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#9FE1CB;background:rgba(255,255,255,.1);padding:5px 14px;border-radius:20px;margin-bottom:18px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:42px;font-weight:500;color:#fff;line-height:1.15;margin-bottom:14px;position:relative;}
+.hero h1 em{color:#C9A84C;font-style:normal;}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.8);line-height:1.6;max-width:480px;margin:0 auto 36px;position:relative;}
+
+.value-split{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:520px;margin:0 auto 36px;position:relative;}
+.vs-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:16px;}
+.vs-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:#9FE1CB;margin-bottom:10px;}
+.vs-item{font-size:13px;color:rgba(255,255,255,.9);padding:4px 0;padding-left:14px;position:relative;line-height:1.4;}
+.vs-item::before{content:'';position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#C9A84C;}
+
+.hero-cta{font-size:13px;color:rgba(255,255,255,.6);position:relative;}
+.hero-cta strong{color:#C9A84C;}
+
+.counters{display:flex;gap:32px;justify-content:center;margin-top:32px;position:relative;}
+.cnt{text-align:center;}
+.cnt-val{font-family:'Playfair Display',serif;font-size:30px;color:#fff;}
+.cnt-lbl{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px;}
+
+/* ── FORM WRAPPER ── */
+.form-wrap{max-width:560px;margin:0 auto;padding:0 16px 60px;}
+
+.progress-bar{height:3px;background:#E2E0D8;border-radius:2px;margin:28px 0 0;overflow:hidden;}
+.progress-fill{height:100%;background:#0F6E56;border-radius:2px;transition:width .4s ease;}
+.progress-label{font-size:11px;color:#8A8A82;margin-top:7px;text-align:center;}
+
+.section{background:#fff;border:1px solid #E2E0D8;border-radius:16px;padding:24px;margin-top:16px;}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.section-num{width:26px;height:26px;border-radius:50%;background:#0F6E56;color:#fff;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.section-title{font-size:15px;font-weight:500;color:#1A1A18;}
+.section-sub{font-size:12px;color:#8A8A82;margin-top:2px;}
+
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.field:last-child{margin-bottom:0;}
+.field label{font-size:12px;font-weight:500;color:#4A4A44;}
+.field input,.field select,.field textarea{padding:11px 13px;border:1px solid #E2E0D8;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:14px;color:#1A1A18;background:#F7F5F0;outline:none;transition:border .15s;width:100%;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#0F6E56;background:#fff;}
+.field textarea{resize:none;height:80px;line-height:1.5;}
+.field-hint{font-size:11px;color:#8A8A82;margin-top:4px;}
+
+/* ROLE CARDS */
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+.role-card{border:1.5px solid #E2E0D8;border-radius:12px;padding:16px 14px;cursor:pointer;transition:all .2s;text-align:center;}
+.role-card:hover{border-color:#0F6E56;}
+.role-card.active{border-color:#0F6E56;background:#E1F5EE;}
+.rc-icon{width:40px;height:40px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;}
+.rc-sender{background:#E1F5EE;}
+.rc-traveler{background:#FDF5E6;}
+.rc-title{font-size:14px;font-weight:500;color:#1A1A18;margin-bottom:4px;}
+.rc-desc{font-size:12px;color:#8A8A82;line-height:1.4;}
+.role-card.active .rc-title{color:#085041;}
+
+/* RADIO / CHECKBOX */
+.radio-group,.check-group{display:flex;flex-direction:column;gap:8px;}
+.radio-item,.check-item{display:flex;align-items:center;gap:9px;cursor:pointer;padding:9px 12px;border:1px solid #E2E0D8;border-radius:8px;transition:all .15s;}
+.radio-item:hover,.check-item:hover{border-color:#0F6E56;background:#F7F5F0;}
+.radio-item.selected,.check-item.selected{border-color:#0F6E56;background:#E1F5EE;}
+.radio-item input,.check-item input{accent-color:#0F6E56;width:15px;height:15px;flex-shrink:0;}
+.radio-item span,.check-item span{font-size:13px;color:#1A1A18;}
+
+/* PILLS */
+.pill-group{display:flex;flex-wrap:wrap;gap:7px;}
+.pill{font-size:12px;padding:7px 14px;border-radius:20px;border:1px solid #E2E0D8;background:#F7F5F0;color:#4A4A44;cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;}
+.pill:hover{border-color:#0F6E56;}
+.pill.selected{background:#0F6E56;color:#fff;border-color:#0F6E56;}
+
+/* SLIDER */
+.range-wrap{padding:4px 0;}
+.range-labels{display:flex;justify-content:space-between;font-size:11px;color:#8A8A82;margin-top:5px;}
+input[type=range]{width:100%;accent-color:#0F6E56;}
+.range-val{text-align:center;font-size:14px;font-weight:500;color:#0F6E56;margin-top:4px;}
+
+/* CONDITIONAL SECTIONS */
+.conditional{display:none;}
+.conditional.show{display:block;}
+
+/* DIVIDER */
+.divider{height:1px;background:#E2E0D8;margin:18px 0;}
+
+/* TRUST SECTION */
+.trust-section{background:#fff;border:1.5px solid #0F6E56;border-radius:16px;padding:24px;margin-top:16px;}
+.trust-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;color:#085041;background:#E1F5EE;padding:4px 10px;border-radius:20px;margin-bottom:14px;}
+
+/* SUBMIT */
+.submit-btn{width:100%;padding:14px;background:#0F6E56;color:#fff;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:background .2s;margin-top:4px;}
+.submit-btn:hover{background:#085041;}
+.small-print{font-size:11px;color:#8A8A82;text-align:center;margin-top:10px;line-height:1.5;}
+
+/* ERROR */
+.err{font-size:12px;color:#C0392B;margin-top:4px;display:none;}
+
+/* SUCCESS */
+.success{display:none;max-width:560px;margin:28px auto 60px;padding:0 16px;}
+.success-inner{background:#fff;border:1px solid #9FE1CB;border-radius:16px;padding:36px 28px;text-align:center;}
+.success-check{width:56px;height:56px;border-radius:50%;background:#E1F5EE;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;}
+.success-title{font-family:'Playfair Display',serif;font-size:24px;color:#085041;margin-bottom:10px;}
+.success-msg{font-size:14px;color:#5F5E5A;line-height:1.7;margin-bottom:20px;}
+.success-role-badge{display:inline-block;font-size:12px;font-weight:500;padding:5px 16px;border-radius:20px;background:#E1F5EE;color:#085041;margin-bottom:16px;}
+.share-box{background:#F7F5F0;border-radius:10px;padding:14px 16px;margin-top:16px;}
+.share-title{font-size:13px;font-weight:500;color:#1A1A18;margin-bottom:8px;}
+.share-link{color:#0F6E56;font-size:13px;font-weight:500;cursor:pointer;text-decoration:underline;}
+.copy-confirm{font-size:12px;color:#0F6E56;margin-left:8px;display:none;}
+
+.footer-links{text-align:center;padding:20px 16px 40px;font-size:12px;color:#8A8A82;}
+.footer-links a{color:#0F6E56;text-decoration:none;}
+
+@media(max-width:480px){
+  .hero h1{font-size:30px;}
+  .value-split{grid-template-columns:1fr;}
+  .role-grid{grid-template-columns:1fr;}
+  .counters{gap:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="logo">EB<span>AN</span></div>
+  <div class="hero-tag">Now onboarding first users</div>
+  <h1>Send items cheaper.<br><em>Earn from your luggage.</em></h1>
+  <p class="hero-sub">Eban connects travelers with people who need items delivered — safely, affordably, and conveniently across Africa and Mauritius.</p>
+
+  <div class="value-split">
+    <div class="vs-card">
+      <div class="vs-label">For travelers</div>
+      <div class="vs-item">Earn by carrying a dedicated extra bag — we book and pay for it</div>
+      <div class="vs-item">No extra work on your end</div>
+      <div class="vs-item">We handle all logistics</div>
+    </div>
+    <div class="vs-card">
+      <div class="vs-label">For senders</div>
+      <div class="vs-item">Significantly cheaper than courier services</div>
+      <div class="vs-item">Faster than international shipping</div>
+      <div class="vs-item">Community-based trust</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;margin-bottom:16px;">
+    <a href="#form-wrap" style="padding:11px 22px;background:#C9A84C;color:#1A1A18;border-radius:9px;font-size:13px;font-weight:500;text-decoration:none;font-family:'DM Sans',sans-serif;">Join the waitlist</a>
+    <a href="https://wa.me/233536244448" target="_blank" style="padding:11px 22px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:9px;font-size:13px;font-weight:500;text-decoration:none;font-family:'DM Sans',sans-serif;">Questions? Chat with us</a>
+  </div>
+
+  <div class="hero-cta">We are matching our first travelers this month. <strong>Sign up now to be included.</strong></div>
+
+  <div style="margin-top:24px;position:relative;">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:7px 16px;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#9FE1CB;animation:pulse 2s infinite;"></div>
+      <span style="font-size:12px;color:rgba(255,255,255,.85);">Waitlist open — Ghana → Mauritius corridor launching first</span>
+    </div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div style="max-width:560px;margin:28px auto 0;padding:0 16px;">
+  <div style="background:#fff;border:1px solid #E2E0D8;border-radius:16px;overflow:hidden;">
+    <div style="background:#0F6E56;padding:14px 20px;">
+      <div style="font-family:'Playfair Display',serif;font-size:17px;color:#fff;margin-bottom:2px;">Delivery pricing</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.7);">All fees included. One flat rate per weight band.</div>
+    </div>
+    <div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;background:#F7F5F0;padding:8px 16px;">
+        <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:#8A8A82;">Weight</div>
+        <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:#8A8A82;text-align:right;">You pay</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 16px;border-bottom:1px solid #E2E0D8;"><span style="font-size:13px;font-weight:500;color:#1A1A18;">0.1 – 1 kg</span><span style="font-size:13px;font-weight:500;color:#0F6E56;text-align:right;">$45</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 16px;border-bottom:1px solid #E2E0D8;background:#FAFAF8;"><span style="font-size:13px;font-weight:500;color:#1A1A18;">1 – 3 kg</span><span style="font-size:13px;font-weight:500;color:#0F6E56;text-align:right;">$60</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 16px;border-bottom:1px solid #E2E0D8;"><span style="font-size:13px;font-weight:500;color:#1A1A18;">3 – 5 kg</span><span style="font-size:13px;font-weight:500;color:#0F6E56;text-align:right;">$75</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 16px;border-bottom:1px solid #E2E0D8;background:#FAFAF8;"><span style="font-size:13px;font-weight:500;color:#1A1A18;">5 – 8 kg</span><span style="font-size:13px;font-weight:500;color:#0F6E56;text-align:right;">$95</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 16px;border-bottom:1px solid #E2E0D8;"><span style="font-size:13px;font-weight:500;color:#1A1A18;">8 – 12 kg</span><span style="font-size:13px;font-weight:500;color:#0F6E56;text-align:right;">$120</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 16px;border-bottom:1px solid #E2E0D8;background:#FAFAF8;"><span style="font-size:13px;font-weight:500;color:#1A1A18;">12 – 17 kg</span><span style="font-size:13px;font-weight:500;color:#0F6E56;text-align:right;">$145</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;padding:10px 16px;"><span style="font-size:13px;font-weight:500;color:#1A1A18;">17 – 23 kg</span><span style="font-size:13px;font-weight:500;color:#0F6E56;text-align:right;">$170</span></div>
+    </div>
+    <div style="padding:11px 16px;background:#E1F5EE;border-top:1px solid #9FE1CB;font-size:12px;color:#085041;">All fees included — no hidden charges. Documents fall under the 0.1–1 kg band.</div>
+  </div>
+</div>
+
+<div class="form-wrap" id="form-wrap">
+
+  <div class="progress-bar"><div class="progress-fill" id="progress" style="width:25%"></div></div>
+  <div class="progress-label" id="prog-label">Step 1 of 3 — Basic info</div>
+
+  <!-- SECTION A: BASIC INFO -->
+  <div class="section" id="sec-a">
+    <div class="section-head">
+      <div class="section-num">A</div>
+      <div><div class="section-title">Basic info</div><div class="section-sub">Tell us who you are</div></div>
+    </div>
+
+    <div class="field">
+      <label>Full name</label>
+      <input type="text" id="inp-name" placeholder="Your full name">
+      <div class="err" id="err-name">Please enter your name.</div>
+    </div>
+    <div class="field">
+      <label>WhatsApp number</label>
+      <input type="tel" id="inp-wa" placeholder="+233... or +230...">
+      <div class="field-hint">We will WhatsApp you within 24 hours to confirm your spot and let you know when Eban launches on your route.</div>
+      <div class="err" id="err-wa">Please enter your WhatsApp number.</div>
+    </div>
+    <div class="field">
+      <label>Email address (optional)</label>
+      <input type="email" id="inp-email" placeholder="your@email.com">
+    </div>
+    <div class="field">
+      <label>University or institution in Mauritius</label>
+      <select id="inp-uni">
+        <option value="">Select your institution</option>
+        <option>University of Mauritius</option>
+        <option>Université des Mascareignes</option>
+        <option>Charles Telfair Institute</option>
+        <option>Middlesex University Mauritius</option>
+        <option>Open University of Mauritius</option>
+        <option>Other</option>
+      </select>
+      <div class="err" id="err-uni">Please select your institution.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="field">
+      <label>I want to use Eban as a...</label>
+      <div class="err" id="err-role" style="margin-bottom:8px">Please select a role to continue.</div>
+      <div class="role-grid">
+        <div class="role-card" id="rc-sender" onclick="setRole('sender')">
+          <div class="rc-icon rc-sender">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="6" width="16" height="11" rx="2" stroke="#0F6E56" stroke-width="1.5"/><path d="M5 6V5a5 5 0 0110 0v1" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="rc-title">Sender</div>
+          <div class="rc-desc">I need items brought from home to Mauritius</div>
+        </div>
+        <div class="role-card" id="rc-traveler" onclick="setRole('traveler')">
+          <div class="rc-icon rc-traveler">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 15l6-6m0 0l2-5 5-2-2 5-5 2z" stroke="#9A7B2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="4" r="1.5" stroke="#9A7B2E" stroke-width="1.5"/></svg>
+          </div>
+          <div class="rc-title">Traveler</div>
+          <div class="rc-desc">I fly into Mauritius and can carry items</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION B: ROLE-SPECIFIC -->
+  <div class="section conditional" id="sec-b">
+    <div class="section-head">
+      <div class="section-num">B</div>
+      <div><div class="section-title" id="sec-b-title">Your details</div><div class="section-sub" id="sec-b-sub">Tell us about your situation</div></div>
+    </div>
+
+    <!-- TRAVELER QUESTIONS -->
+    <div id="q-traveler" class="conditional">
+      <div class="field">
+        <label>Where are you flying from?</label>
+        <select id="t-from">
+          <option value="">Select origin country</option>
+          <option>Ghana</option>
+          <option>Nigeria</option>
+          <option>Kenya</option>
+          <option>South Africa</option>
+          <option>Other African country</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Destination</label>
+        <input value="Mauritius" readonly style="color:#8A8A82">
+      </div>
+      <div class="field">
+        <label>When are you next traveling to Mauritius?</label>
+        <input type="text" id="t-date" placeholder="e.g. May 2026, around June, not sure yet">
+        <div class="field-hint">Exact date not needed — an approximate month or timeframe is fine.</div>
+      </div>
+      <div class="field">
+        <label>If you have free space in your personal allowance, how much could you offer? (kg)</label>
+        <div class="field-hint">If there is no space, Eban will book and pay for a separate extra bag on your ticket.</div>
+        <div class="range-wrap">
+          <input type="range" min="1" max="23" value="10" step="1" oninput="document.getElementById('t-space-val').textContent=this.value+' kg'">
+          <div class="range-val" id="t-space-val">10 kg</div>
+          <div class="range-labels"><span>1 kg</span><span>23 kg (full bag)</span></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>How often do you travel to Mauritius?</label>
+        <div class="radio-group">
+          <label class="radio-item" onclick="selectRadio(this,'t-freq')"><input type="radio" name="t-freq"><span>Once a year or less</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'t-freq')"><input type="radio" name="t-freq"><span>2–3 times a year</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'t-freq')"><input type="radio" name="t-freq"><span>4+ times a year</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SENDER QUESTIONS -->
+    <div id="q-sender" class="conditional">
+      <div class="field">
+        <label>Where do you need items sent from?</label>
+        <div class="pill-group" id="sender-routes">
+          <div class="pill" onclick="this.classList.toggle('selected')">Ghana</div>
+          <div class="pill" onclick="this.classList.toggle('selected')">Nigeria</div>
+          <div class="pill" onclick="this.classList.toggle('selected')">Kenya</div>
+          <div class="pill" onclick="this.classList.toggle('selected')">South Africa</div>
+          <div class="pill" onclick="this.classList.toggle('selected')">Other</div>
+        </div>
+      </div>
+      <div class="field" style="margin-top:14px">
+        <label>What type of items do you typically need sent?</label>
+        <div class="pill-group">
+          <div class="pill" onclick="this.classList.toggle('selected')">Food &amp; groceries</div>
+          <div class="pill" onclick="this.classList.toggle('selected')">Personal care</div>
+          <div class="pill" onclick="this.classList.toggle('selected')">Clothing</div>
+          <div class="pill" onclick="this.classList.toggle('selected')">Documents</div>
+          <div class="pill" onclick="this.classList.toggle('selected')">Electronics</div>
+          <div class="pill" onclick="this.classList.toggle('selected')">Other</div>
+        </div>
+      </div>
+      <div class="field" style="margin-top:14px">
+        <label>Estimated weight of items per delivery (kg)</label>
+        <div class="range-wrap">
+          <input type="range" min="1" max="23" value="5" step="1" oninput="document.getElementById('s-weight-val').textContent=this.value+' kg'">
+          <div class="range-val" id="s-weight-val">5 kg</div>
+          <div class="range-labels"><span>1 kg</span><span>23 kg</span></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>How often do you need items sent?</label>
+        <div class="radio-group">
+          <label class="radio-item" onclick="selectRadio(this,'s-freq')"><input type="radio" name="s-freq"><span>Once a year or less</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'s-freq')"><input type="radio" name="s-freq"><span>Every few months</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'s-freq')"><input type="radio" name="s-freq"><span>Monthly or more</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION C: TRUST + CONCERNS -->
+  <div class="trust-section conditional" id="sec-c">
+    <div class="trust-badge">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.3l-3.7 1.9.7-4.1-3-2.9 4.2-.7L7 1z" stroke="#0F6E56" stroke-width="1.2" stroke-linejoin="round"/></svg>
+      Optional — but very helpful
+    </div>
+    <div class="section-head" style="margin-bottom:6px">
+      <div class="section-num">C</div>
+      <div><div class="section-title">Help us build it right</div><div class="section-sub">Skip this if you are in a hurry — answer if you have 2 minutes</div></div>
+    </div>
+    <div style="height:14px"></div>
+
+    <div class="field">
+      <label>What concerns would you have about using a service like this?</label>
+      <textarea id="q-concerns" placeholder="Be honest — this helps us build something you actually trust"></textarea>
+    </div>
+    <div class="field">
+      <label>What would make you feel safe using Eban?</label>
+      <textarea id="q-safety" placeholder="e.g. verified IDs, escrow payment, knowing the traveler..."></textarea>
+    </div>
+    <div class="field">
+      <label>What would stop you from using this service?</label>
+      <textarea id="q-stopper" placeholder="e.g. customs risk, cost, not trusting strangers..."></textarea>
+    </div>
+    <div class="field">
+      <label>How would you prefer items to be handled before and during travel?</label>
+      <textarea id="q-handling" placeholder="e.g. sealed packaging, photo confirmation, weight check..."></textarea>
+    </div>
+    <div class="field">
+      <label>What is your biggest worry about <span id="worry-label">this service</span>?</label>
+      <textarea id="q-worry" placeholder="No wrong answers here"></textarea>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TRAVELER INCENTIVE -->
+    <div id="q-incentive" class="conditional">
+      <div class="field">
+        <label>How much would you expect to earn per trip for this to be worth your time?</label>
+        <div class="radio-group">
+          <label class="radio-item" onclick="selectRadio(this,'earn')"><input type="radio" name="earn"><span>$5 – $10 per trip</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'earn')"><input type="radio" name="earn"><span>$10 – $20 per trip</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'earn')"><input type="radio" name="earn"><span>$20 – $30 per trip</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'earn')"><input type="radio" name="earn"><span>More than $30</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SENDER PRICING -->
+    <div id="q-pricing" class="conditional">
+      <div class="field">
+        <label>How much cheaper than regular couriers would Eban need to be for you to use it?</label>
+        <div class="radio-group">
+          <label class="radio-item" onclick="selectRadio(this,'cheaper')"><input type="radio" name="cheaper"><span>Just a little cheaper (10–20%)</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'cheaper')"><input type="radio" name="cheaper"><span>Noticeably cheaper (30–50%)</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'cheaper')"><input type="radio" name="cheaper"><span>Much cheaper (50%+)</span></label>
+          <label class="radio-item" onclick="selectRadio(this,'cheaper')"><input type="radio" name="cheaper"><span>Price is not my main concern</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="field">
+      <label>Have you ever carried or sent items through someone traveling before?</label>
+      <div class="radio-group">
+        <label class="radio-item" id="exp-yes" onclick="selectRadio(this,'exp');showExpDetail(true)"><input type="radio" name="exp"><span>Yes</span></label>
+        <label class="radio-item" onclick="selectRadio(this,'exp');showExpDetail(false)"><input type="radio" name="exp"><span>No</span></label>
+      </div>
+    </div>
+    <div class="field conditional" id="exp-detail">
+      <label>How did it work? What was good or bad about it?</label>
+      <textarea id="q-exp-detail" placeholder="Tell us how the informal process worked for you..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Anything else you want to tell us? (optional)</label>
+      <textarea id="q-other" placeholder="Any suggestions, ideas, or feedback for Eban..."></textarea>
+    </div>
+  </div>
+
+  <div style="margin-top:20px">
+    <div style="background:#E1F5EE;border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:13px;color:#085041;line-height:1.6;">
+      <strong>What happens after you sign up:</strong> We will WhatsApp you within 24 hours to confirm your spot. When Eban launches on your route you will be the first to know — and first to be matched.
+    </div>
+    <button class="submit-btn" onclick="submitForm()">Join the Eban waitlist</button>
+    <p class="small-print">No spam. We will never share your details. You can opt out at any time by messaging us on WhatsApp.</p>
+    <p style="font-size:12px;color:#8A8A82;text-align:center;margin-top:10px;">Questions? <a href="https://wa.me/233536244448" target="_blank" style="color:#0F6E56;font-weight:500;">Chat with us on WhatsApp</a></p>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="success" id="success-wrap">
+  <div class="success-inner">
+    <div class="success-check">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M5 13l6 6L21 7" stroke="#0F6E56" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="success-title">You are on the list</div>
+    <div class="success-msg" id="s-msg">Thank you for joining.</div>
+    <div class="success-role-badge" id="s-role">Sender</div>
+    <div style="background:#E1F5EE;border-radius:10px;padding:14px 16px;margin:14px 0;text-align:left;">
+      <div style="font-size:12px;font-weight:500;color:#085041;margin-bottom:8px;">What happens next</div>
+      <div style="font-size:12px;color:#0F6E56;line-height:1.7;">
+        1. We will WhatsApp you within 24 hours to confirm your spot<br>
+        2. When your corridor launches you will be the first to know<br>
+        3. We may reach out to help test the first deliveries
+      </div>
+    </div>
+    <div class="share-box">
+      <div class="share-title">Know someone who would be interested?</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;">
+        <a href="https://wa.me/?text=I%20just%20joined%20the%20Eban%20waitlist%20%E2%80%94%20a%20platform%20that%20connects%20travelers%20with%20people%20who%20need%20items%20from%20home.%20Join%20here%3A%20https%3A%2F%2Feban-delivery.netlify.app" target="_blank" style="font-size:12px;padding:6px 14px;background:#0F6E56;color:#fff;border-radius:7px;text-decoration:none;font-weight:500;font-family:'DM Sans',sans-serif;">Share on WhatsApp</a>
+        <span class="share-link" onclick="copyLink()" style="font-size:12px;padding:6px 14px;border:1px solid #E2E0D8;border-radius:7px;">Copy link</span>
+        <span class="copy-confirm" id="copy-ok">Copied!</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-links">
+  <a href="https://eban-delivery.netlify.app">eban-link-up.lovable.app</a> &nbsp;·&nbsp;
+  WhatsApp: <a href="https://wa.me/233536244448">+233 53 624 4448</a>
+</div>
+
+<script>
+let selectedRole = null;
+
+function setRole(r){
+  selectedRole = r;
+  document.getElementById('rc-sender').classList.toggle('active', r==='sender');
+  document.getElementById('rc-traveler').classList.toggle('active', r==='traveler');
+  document.getElementById('err-role').style.display = 'none';
+
+  // show section B
+  const secB = document.getElementById('sec-b');
+  secB.classList.add('show');
+  document.getElementById('q-traveler').classList.toggle('show', r==='traveler');
+  document.getElementById('q-sender').classList.toggle('show', r==='sender');
+  document.getElementById('sec-b-title').textContent = r==='traveler' ? 'Your travel details' : 'Your sending details';
+  document.getElementById('sec-b-sub').textContent = r==='traveler' ? 'Tell us about your trips' : 'Tell us what you need sent';
+
+  // show section C
+  const secC = document.getElementById('sec-c');
+  secC.classList.add('show');
+  document.getElementById('q-incentive').classList.toggle('show', r==='traveler');
+  document.getElementById('q-pricing').classList.toggle('show', r==='sender');
+  document.getElementById('worry-label').textContent = r==='traveler' ? 'carrying items for someone' : 'sending items through a traveler';
+
+  updateProgress();
+  setTimeout(()=>secB.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+}
+
+function selectRadio(el, name){
+  document.querySelectorAll(`[name="${name}"]`).forEach(r=>{
+    r.closest('.radio-item').classList.remove('selected');
+  });
+  el.classList.add('selected');
+}
+
+function showExpDetail(show){
+  document.getElementById('exp-detail').classList.toggle('show', show);
+}
+
+function updateProgress(){
+  const pct = selectedRole ? 75 : 25;
+  document.getElementById('progress').style.width = pct+'%';
+  const labels = {25:'Step 1 of 3 — Basic info', 75:'Step 2–3 of 3 — Your details & trust questions'};
+  document.getElementById('prog-label').textContent = labels[pct];
+}
+
+function submitForm(){
+  let ok = true;
+  document.querySelectorAll('.err').forEach(e=>e.style.display='none');
+
+  const name = document.getElementById('inp-name').value.trim();
+  const wa = document.getElementById('inp-wa').value.trim();
+  const uni = document.getElementById('inp-uni').value;
+
+  if(!name){ document.getElementById('err-name').style.display='block'; ok=false; }
+  if(!wa){ document.getElementById('err-wa').style.display='block'; ok=false; }
+  if(!uni){ document.getElementById('err-uni').style.display='block'; ok=false; }
+  if(!selectedRole){ document.getElementById('err-role').style.display='block'; ok=false; }
+  if(!ok){ document.getElementById('sec-a').scrollIntoView({behavior:'smooth'}); return; }
+
+  counts.total++;
+  if(selectedRole==='sender') counts.senders++;
+  else counts.travelers++;
+
+  document.getElementById('s-msg').textContent =
+    `Thanks ${name}! We will WhatsApp you at ${wa} within 24 hours to confirm your spot.`;
+  document.getElementById('s-role').textContent =
+    selectedRole==='sender' ? 'Sender' : 'Traveler';
+
+  fetch('https://script.google.com/macros/s/AKfycbyR8SkQ_v9rhnr3Z2MM1foIXcf5yWuAPF_jgKJlohe0t6xb78Ev1ErgX_P3PcnDlJy-/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      name: name,
+      whatsapp: wa,
+      email: document.getElementById('inp-email').value,
+      university: uni,
+      role: selectedRole,
+      concerns: document.getElementById('q-concerns').value,
+      safety: document.getElementById('q-safety').value,
+      stopper: document.getElementById('q-stopper').value,
+      handling: document.getElementById('q-handling').value,
+      worry: document.getElementById('q-worry').value,
+      other: document.getElementById('q-other').value
+    })
+  }).catch(()=>{});
+
+  document.getElementById('form-wrap').style.display = 'none';
+  document.getElementById('success-wrap').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  document.getElementById('progress').style.width = '100%';
+  document.getElementById('prog-label').textContent = 'Complete';
+}
+
+function copyLink(){
+  navigator.clipboard.writeText('https://eban-delivery.netlify.app').then(()=>{
+    const el = document.getElementById('copy-ok');
+    el.style.display = 'inline';
+    setTimeout(()=>el.style.display='none', 2000);
+  });
+}
+</script>
+</body>
+</html>
