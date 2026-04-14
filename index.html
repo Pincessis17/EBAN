@@ -543,30 +543,46 @@
 
   var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyR8SkQ_v9rhnr3Z2MM1foIXcf5yWuAPF_jgKJlohe0t6xb78Ev1ErgX_P3PcnDlJy-/exec';
 
+
  function submitContact() {
+  var name = document.getElementById('contact-name').value.trim();
+  var wa = document.getElementById('contact-email').value.trim();
+  var role = document.getElementById('contact-role').value;
+  var message = document.getElementById('contact-message').value.trim();
+
+  if(!name || !wa || !message) {
+    alert('Please fill in your name, WhatsApp number, and message.');
+    return;
+  }
+
   var btn = document.getElementById('contactSubmit');
-  btn.textContent = 'Message Sent';
+  btn.textContent = 'Sending...';
   btn.disabled = true;
 
   var payload = {
-    type: 'contact_message',
-    name: document.getElementById('contact-name').value,
-    email: document.getElementById('contact-email').value,
-    role: document.getElementById('contact-role').value,
-    message: document.getElementById('contact-message').value
+    name: name,
+    whatsapp: wa,
+    role: role,
+    message: message,
+    type: 'contact_message'
   };
 
   fetch(APPS_SCRIPT_URL, {
-  method: 'POST',
-  mode: 'no-cors',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(payload)
-})
-  .then(() => {
-    // Clear fields
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(function(){}).finally(function(){
+    btn.textContent = '✓ Message Sent';
+    btn.style.background = '#0F6E56';
+    btn.style.color = '#fff';
     document.getElementById('contact-name').value = '';
     document.getElementById('contact-email').value = '';
     document.getElementById('contact-role').value = '';
-    document.getElementById('contact
+    document.getElementById('contact-message').value = '';
+  });
+}
+
+</script>
+</body>
+</html>
