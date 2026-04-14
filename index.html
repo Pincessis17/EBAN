@@ -92,8 +92,8 @@
   .how .section-label span{color:var(--gold-light);}
   .how .section-label::before{background:var(--gold);}
   .how .section-body{color:rgba(255,255,255,.48);}
-  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:64px;position:relative;}
-  .steps::before{content:'';position:absolute;top:36px;left:8%;right:8%;height:1px;background:rgba(201,168,76,.2);}
+  .steps{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:64px;position:relative;}
+  .steps::before{content:'';position:absolute;top:36px;left:5%;right:5%;height:1px;background:rgba(201,168,76,.2);}
   .step{padding:0 18px;text-align:center;}
   .step-num{width:72px;height:72px;border:1px solid rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;background:var(--teal-dark);position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold-light);transition:all .3s;}
   .step:hover .step-num{background:var(--gold);color:var(--teal-dark);border-color:var(--gold);}
@@ -276,7 +276,7 @@
         <div class="hero-stats">
           <div class="hero-stat"><div class="hero-stat-num">$2/kg</div><div class="hero-stat-label">Traveller Earns</div></div>
           <div class="hero-stat"><div class="hero-stat-num">48h</div><div class="hero-stat-label">Collection Window</div></div>
-          <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Structured Steps</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Structured Steps</div></div>
         </div>
       </div>
     </div>
@@ -294,8 +294,8 @@
           <div class="problem-box-title">Today&#39;s reality</div>
           <div class="prob-item"><span class="prob-dash">&mdash;</span><p>Someone posts in a WhatsApp group asking if anyone travelling from home can carry a package.</p></div>
           <div class="prob-item"><span class="prob-dash">&mdash;</span><p>No written agreement, no fee structure, no accountability &mdash; and no protection if the item is lost.</p></div>
-          <div class="prob-item"><span class="prob-dash">&mdash;</span><p>Customs risk falls entirely on the traveller, who may not know what they are carrying.</p></div>
-          <div class="prob-item"><span class="prob-dash">&mdash;</span><p>The sender has no recourse if the item is damaged or never arrives.</p></div>
+          <div class="prob-item"><span class="prob-dash">&mdash;</span><p>The traveller has no idea what they agreed to carry or whether it is legal.</p></div>
+          <div class="prob-item"><span class="prob-dash">&mdash;</span><p>Everyone involved is exposed &mdash; and nobody is protected.</p></div>
         </div>
       </div>
       <div class="problem-text">
@@ -312,38 +312,44 @@
 <section class="how" id="how">
   <div class="container">
     <div class="section-label"><span>The Process</span></div>
-    <h2 class="section-title" style="color:var(--white)">Five steps from<br><em>request to collection</em></h2>
-    <p class="section-body" style="margin-top:16px;">Every delivery follows a clearly defined five-stage process. Both sender and traveller know exactly what is expected &mdash; and when.</p>
-    <div class="steps reveal">
+    <h2 class="section-title" style="color:var(--white)">Six steps from<br><em>request to collection</em></h2>
+    <p class="section-body" style="margin-top:16px;">Every delivery follows a clearly defined process. Both sender and traveller know exactly what is expected &mdash; and when.</p>
+    <div class="steps reveal" style="grid-template-columns:repeat(6,1fr);">
       <div class="step">
         <div class="step-num">01</div>
         <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <h4>Request Submission</h4>
-        <p>Sender describes item, weight, and value. Service fee is paid upfront before matching begins.</p>
+        <h4>Request</h4>
+        <p>Sender describes items and estimated weight. Eban reviews and confirms eligibility. No payment yet.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
         <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div>
-        <h4>Traveller Matching</h4>
-        <p>Eban identifies a verified traveller on your corridor and presents the delivery request. Both parties are notified via WhatsApp.</p>
+        <h4>Matching</h4>
+        <p>Eban manually matches the request with a verified traveller on your corridor. Both parties confirmed via WhatsApp.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
         <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h4>Pre-departure Handoff</h4>
-        <p>Sender hands item to traveller at origin. Traveller inspects and confirms. Both parties receive confirmation from EBAN.</p>
+        <h4>Handoff &amp; Weighing</h4>
+        <p>Sender's contact drops items to the Eban coordinator at origin. Items are weighed, photographed, and confirmed.</p>
       </div>
       <div class="step">
         <div class="step-num">04</div>
-        <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <h4>Airport Collection</h4>
-        <p>On arrival in Mauritius, EBAN meets the traveller outside arrivals. Receipt is signed. The traveller&#39;s obligation ends here.</p>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h4>Payment</h4>
+        <p>Sender pays based on confirmed weight before the traveller departs.</p>
       </div>
       <div class="step">
         <div class="step-num">05</div>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h4>Airport Collection</h4>
+        <p>Eban meets the traveller at SSR airport. Receipt is signed. Traveller is paid at this point. Traveller's obligation ends here.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">06</div>
         <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
         <h4>Collection</h4>
-        <p>Sender is notified and collects their items. Students collect at their university. Everyone else collects at the Eban Main Office, African Leadership College of Higher Education.</p>
+        <p>Sender is notified and collects their items at their location or the Eban office.</p>
       </div>
     </div>
   </div>
