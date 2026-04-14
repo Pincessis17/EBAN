@@ -238,143 +238,6 @@
 </head>
 <body>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="requestModal">
-  <div class="modal">
-    <div class="modal-header">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-      <h2>Request a Delivery</h2>
-      <p>Complete the form below and our team will match you with a verified traveller on your corridor.</p>
-    </div>
-    <div class="modal-body" id="modalFormBody">
-      <div class="modal-section-title">Your Details</div>
-      <div class="form-grid-2">
-        <div class="fg"><label>First Name</label><input type="text" name="firstName" placeholder="First name"></div>
-        <div class="fg"><label>Last Name</label><input type="text" name="lastName" placeholder="Last name"></div>
-      </div>
-      <div class="form-grid-2">
-        <div class="fg"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com"></div>
-        <div class="fg"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+233 ..."></div>
-      </div>
-      <div class="form-grid-2">
-        <div class="fg"><label>Your location in Mauritius</label><input type="text" name="campus" placeholder="e.g. Quatre Bornes, Ebène, Port Louis"></div>
-        <div class="fg"><label>I am a</label>
-          <select name="role">
-  <option value="" disabled selected>Select role</option>
-  <option value="Student">Student</option>
-  <option value="Working professional">Working professional</option>
-  <option value="Family member">Family member</option>
-  <option value="Other">Other</option>
-</select>
-        </div>
-      </div>
-      <div class="form-divider"></div>
-      <div class="modal-section-title">Delivery Details</div>
-      <div class="form-grid-2">
-        <div class="fg"><label>Origin Country</label>
-          <select id="countrySelect" name="country" onchange="handleCountryChange()">
-  <option value="" disabled selected>Select country</option>
-
-  <option disabled>── North Africa ──</option>
-  <option>Algeria</option>
-  <option>Egypt</option>
-  <option>Libya</option>
-  <option>Morocco</option>
-  <option>Sudan</option>
-  <option>Tunisia</option>
-
-  <option disabled>── West Africa ──</option>
-  <option>Benin</option>
-  <option>Burkina Faso</option>
-  <option>Cabo Verde</option>
-  <option>Côte d'Ivoire</option>
-  <option>Gambia</option>
-  <option>Ghana</option>
-  <option>Guinea</option>
-  <option>Guinea-Bissau</option>
-  <option>Liberia</option>
-  <option>Mali</option>
-  <option>Mauritania</option>
-  <option>Niger</option>
-  <option>Nigeria</option>
-  <option>Senegal</option>
-  <option>Sierra Leone</option>
-  <option>Togo</option>
-
-  <option disabled>── East Africa ──</option>
-  <option>Burundi</option>
-  <option>Comoros</option>
-  <option>Djibouti</option>
-  <option>Eritrea</option>
-  <option>Ethiopia</option>
-  <option>Kenya</option>
-  <option>Madagascar</option>
-  <option>Malawi</option>
-  <option>Mauritius</option>
-  <option>Rwanda</option>
-  <option>Seychelles</option>
-  <option>Somalia</option>
-  <option>South Sudan</option>
-  <option>Tanzania</option>
-  <option>Uganda</option>
-  <option>Zambia</option>
-  <option>Zimbabwe</option>
-
-  <option disabled>── Central Africa ──</option>
-  <option>Angola</option>
-  <option>Cameroon</option>
-  <option>Central African Republic</option>
-  <option>Chad</option>
-  <option>Congo (Republic)</option>
-  <option>Congo (DRC)</option>
-  <option>Equatorial Guinea</option>
-  <option>Gabon</option>
-  <option>Sao Tome and Principe</option>
-
-  <option disabled>── Southern Africa ──</option>
-  <option>Botswana</option>
-  <option>Eswatini</option>
-  <option>Lesotho</option>
-  <option>Namibia</option>
-  <option>South Africa</option>
-
-  <option disabled>── Islands / Local ──</option>
-  <option>Rodrigues</option>
-
-  <option value="Other">Other</option>
-</select>
-        </div>
-        <div class="fg"><label>Destination</label><input type="text" name="destination" value="Mauritius" readonly style="opacity:.5;cursor:not-allowed;"></div>
-      </div>
-      <div class="fg"><label>Item Category</label>
-        <select name="category">
-  <option value="" disabled selected>Select category</option>
-  <option value="Food products">Food products (non-perishable, sealed)</option>
-  <option value="Personal care">Personal care & hygiene products</option>
-  <option value="Clothing">Clothing & fabric</option>
-  <option value="Documents">Documents & printed materials</option>
-  <option value="Household goods">Small household goods</option>
-  <option value="Mixed">Mixed / multiple categories</option>
-</select>
-      </div>
-      <div class="form-grid-2">
-        <div class="fg"><label>Estimated Weight (kg)</label><input type="number" name="weight" placeholder="e.g. 3.5" min="0.1" step="0.1"></div>
-        <div class="fg"><label>Estimated Value (USD)</label><input type="number" name="value" placeholder="Approximate value"></div>
-      </div>
-      <div class="fg"><label>Item Description</label><textarea name="description" placeholder="Please describe the contents clearly. Accurate declarations protect both you and the traveller."></textarea></div>
-      <div class="fg"><label>Preferred Arrival Window</label><input type="text" name="window" placeholder="e.g. first week of May 2026, or flexible"></div>
-      <div class="fg"><label>Origin Contact (Person handing item to traveller)</label><input type="text" name="senderContact" placeholder="Full name &amp; phone number"></div>
-      <div class="fg"><label>Anything else we should know?</label><textarea name="notes" placeholder="Special handling, fragile contents, urgency, etc."></textarea></div>
-      <button class="btn-submit" onclick="submitRequest()">Submit Delivery Request</button>
-    </div>
-    <div class="modal-success" id="modalSuccess">
-      <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      <h3>Request Received</h3>
-      <p>Thank you. Our team will review your request and be in touch within 24 hours to confirm your traveller match and next steps.</p>
-    </div>
-  </div>
-</div>
-
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#"><img id="navLogo" src="data:image/png;base64,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" alt="EBAN"><span class="nav-logo-text">EBAN</span></a>
@@ -386,8 +249,7 @@
     <li><a href="https://wa.me/233536244448" target="_blank" style="color:rgba(201,168,76,.9);">WhatsApp Us</a></li>
   </ul>
   <div style="display:flex;gap:10px;align-items:center;">
-    <a href="https://pincessis17.github.io/EBAN/eban_landing.html" style="font-size:11px;color:rgba(255,255,255,.6);text-decoration:none;letter-spacing:1px;text-transform:uppercase;border:1px solid rgba(255,255,255,.2);padding:7px 14px;transition:all .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,.2)'">Join Waitlist</a>
-    <a href="#" class="nav-cta" onclick="openModal();return false;">Request Delivery</a>
+    <a href="https://pincessis17.github.io/EBAN/eban_landing.html" class="nav-cta">Join Waitlist</a>
   </div>
 </nav>
 
@@ -401,7 +263,7 @@
       <h1 class="hero-title">Send items cheaper.<br><em>Earn from</em><br>your luggage.</h1>
       <p class="hero-sub">EBAN connects verified travellers with people in Mauritius who need items delivered from home &mdash; safely, affordably, and with full accountability at every step.</p>
       <div class="hero-actions">
-        <a href="#" class="btn-primary" onclick="openModal();return false;">Request a Delivery</a>
+        <a href="https://pincessis17.github.io/EBAN/eban_landing.html" class="btn-primary">Join the Waitlist</a>
         <a href="#how" class="btn-outline">How It Works</a>
       </div>
     </div>
@@ -687,61 +549,7 @@
   },{threshold:.1});
   document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 
-  // Modal
-  function openModal(){document.getElementById('requestModal').classList.add('active');document.body.style.overflow='hidden';}
-  function closeModal(){
-    document.getElementById('requestModal').classList.remove('active');
-    document.body.style.overflow='';
-    setTimeout(function(){
-      document.getElementById('modalFormBody').style.display='';
-      document.getElementById('modalSuccess').style.display='none';
-    },400);
-  }
-  document.getElementById('requestModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
-  // ─────────────────────────────────────────────────────────────
-  // STEP 1: Paste your Google Apps Script URL below (between the quotes)
-  // How to get it:
-  //   1. Open your Google Sheet
-  //   2. Extensions → Apps Script → paste the doPost code → Save
-  //   3. Deploy → New deployment → Web app → Anyone → Deploy
-  //   4. Copy the URL and paste it below
-  // ─────────────────────────────────────────────────────────────
   var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyR8SkQ_v9rhnr3Z2MM1foIXcf5yWuAPF_jgKJlohe0t6xb78Ev1ErgX_P3PcnDlJy-/exec';
-
- function submitRequest() {
-  try {
-    const btn = document.querySelector('#modalFormBody .btn-submit');
-    btn.textContent = 'Submitting...';
-    btn.disabled = true;
-
-    const inputs = document.querySelectorAll('#requestModal input, #requestModal textarea, #requestModal select');
-
-    const data = { type: "delivery_request" };
-
-    inputs.forEach(input => {
-      if (input.name) {
-        data[input.name] = input.value;
-      }
-    });
-
-    fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    .then(() => {
-      document.getElementById('modalFormBody').style.display = 'none';
-      document.getElementById('modalSuccess').style.display = 'block';
-    });
-
-  } catch (err) {
-    console.error("Script error:", err);
-    alert("Something broke. Check console.");
-  }
-}
 
  function submitContact() {
   var btn = document.getElementById('contactSubmit');
