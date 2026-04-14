@@ -227,6 +227,7 @@ input[type=range]{width:100%;accent-color:#0F6E56;}
         <option>Charles Telfair Institute</option>
         <option>Middlesex University Mauritius</option>
         <option>Open University of Mauritius</option>
+        <option>African Leadership College of Higher Education (ALCHE)</option>
         <option>Other</option>
       </select>
       <div class="err" id="err-uni">Please select your institution.</div>
@@ -466,7 +467,7 @@ input[type=range]{width:100%;accent-color:#0F6E56;}
 </div>
 
 <div class="footer-links">
-  <a href="https://eban-delivery.netlify.app">eban-link-up.lovable.app</a> &nbsp;·&nbsp;
+  <a href="https://pincessis17.github.io/eban-delivery">pincessis17.github.io/eban-delivery</a> &nbsp;·&nbsp;
   WhatsApp: <a href="https://wa.me/233536244448">+233 53 624 4448</a>
 </div>
 
@@ -530,10 +531,6 @@ function submitForm(){
   if(!selectedRole){ document.getElementById('err-role').style.display='block'; ok=false; }
   if(!ok){ document.getElementById('sec-a').scrollIntoView({behavior:'smooth'}); return; }
 
-  counts.total++;
-  if(selectedRole==='sender') counts.senders++;
-  else counts.travelers++;
-
   document.getElementById('s-msg').textContent =
     `Thanks ${name}! We will WhatsApp you at ${wa} within 24 hours to confirm your spot.`;
   document.getElementById('s-role').textContent =
@@ -567,7 +564,7 @@ function submitForm(){
 }
 
 function copyLink(){
-  navigator.clipboard.writeText('https://eban-delivery.netlify.app').then(()=>{
+  navigator.clipboard.writeText('https://pincessis17.github.io/EBAN/eban_landing.html').then(()=>{
     const el = document.getElementById('copy-ok');
     el.style.display = 'inline';
     setTimeout(()=>el.style.display='none', 2000);
